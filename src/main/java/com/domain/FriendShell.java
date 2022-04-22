@@ -1,5 +1,7 @@
 package com.domain;
 
+import com.google.common.base.MoreObjects;
+
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +49,17 @@ public class FriendShell {
         if (friendsLayerCurrent.isEmpty()) {
             throw new IllegalStateException(String.format("All fiends of %s were sorted out", friend));
         }
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("friend", friend)
+            .add("friendsLayerPrev", friendsLayerPrev)
+            .add("friendsLayerCurrent", friendsLayerCurrent)
+            .add("friendsLayerNext", friendsLayerNext)
+            .add("parent", super.toString())
+            .toString();
     }
 
     public HashMap<String, Friend> getFriendsLayerCurrent() {
