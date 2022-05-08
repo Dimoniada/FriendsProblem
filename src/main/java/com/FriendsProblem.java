@@ -29,7 +29,7 @@ public class FriendsProblem {
         d.addFriendship(f);
 //        e.addFriendship(g);
         f.addFriendship(h);
-//        g.addFriendship(e);
+        g.addFriendship(e);
         h.addFriendship(l);
         i.addFriendship(e);
         j.addFriendship(i);
