@@ -2,13 +2,9 @@ package com;
 
 import com.domain.Friend;
 import com.domain.FriendShell;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
 public class FriendsProblem {
     public static void main(String[] args) {
-//        SpringApplication.run(FriendsProblem.class, args)
-//            .close();
 
         Friend a = new Friend("A");
         Friend b = new Friend("B");
@@ -49,16 +45,20 @@ public class FriendsProblem {
 
     public static Boolean isIntersected(FriendShell friendShell1, FriendShell friendShell2) {
         var pathExists = false;
-        var friendsLayer1 = friendShell1.getFriendsLayerCurrent();
-        var friendsLayer2 = friendShell2.getFriendsLayerCurrent();
-        while (!pathExists) {
-            pathExists = friendsLayer1
-                .entrySet()
-                .stream()
-                .anyMatch(es -> friendsLayer2.containsKey(es.getKey()));
+        var friendsLayerCurrent1 = friendShell1.getFriendsLayerCurrent();
+        var friendsLayerNext1 = friendShell1.getFriendsLayerNext();
+        var friendsLayerCurrent2 = friendShell2.getFriendsLayerCurrent();
+        do {
             friendShell1.spreadShell();
             friendShell2.spreadShell();
-        }
+            pathExists = friendsLayerCurrent2
+                .entrySet()
+                .stream()
+                .anyMatch(es ->
+                    friendsLayerCurrent1.containsKey(es.getKey())
+                    || friendsLayerNext1.containsKey(es.getKey())
+                );
+        } while (!pathExists);
         return true;
     }
 }

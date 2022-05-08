@@ -65,4 +65,8 @@ public class FriendShell {
     public HashMap<String, Friend> getFriendsLayerCurrent() {
         return friendsLayerCurrent;
     }
+
+    public HashMap<String, Friend> getFriendsLayerNext() {
+        return friendsLayerNext;
+    }
 }
