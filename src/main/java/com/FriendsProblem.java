@@ -27,7 +27,6 @@ public class FriendsProblem {
         a.addFriendship(d);
         d.addFriendship(e);
         d.addFriendship(f);
-//        e.addFriendship(g);
         f.addFriendship(h);
         g.addFriendship(e);
         h.addFriendship(l);
@@ -44,10 +43,10 @@ public class FriendsProblem {
     }
 
     public static Boolean isIntersected(FriendShell friendShell1, FriendShell friendShell2) {
+        final var friendsLayerCurrent1 = friendShell1.getFriendsLayerCurrent();
+        final var friendsLayerNext1 = friendShell1.getFriendsLayerNext();
+        final var friendsLayerCurrent2 = friendShell2.getFriendsLayerCurrent();
         var pathExists = false;
-        var friendsLayerCurrent1 = friendShell1.getFriendsLayerCurrent();
-        var friendsLayerNext1 = friendShell1.getFriendsLayerNext();
-        var friendsLayerCurrent2 = friendShell2.getFriendsLayerCurrent();
         do {
             friendShell1.spreadShell();
             friendShell2.spreadShell();

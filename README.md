@@ -35,3 +35,4 @@ public class Friend {
 ```
 
 P.S.: a friendship is mutual always and the mail field in class is unique for any friend.
+
